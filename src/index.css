@@ -1,3 +1,36 @@
+*{
+  border: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a{
+  text-decoration: none;
+  color: #000;
+}
+
+ul{
+    list-style: none;
+}
+
+input{
+    padding: .7rem 1rem;
+    border: 1px solid #eee;
+    border-radius: .3rem;
+    width: 100%;
+    max-width: 300px;
+}
+
+.btn{
+    padding: .7rem 1rem;
+    border-radius: .5rem;
+    cursor: pointer;
+}
+
+.btn:hover{
+    background-color: antiquewhite;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
