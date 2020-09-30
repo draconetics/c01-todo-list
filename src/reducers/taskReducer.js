@@ -1,5 +1,5 @@
 const getId = ()=>{
-    return Number.parseInt(new Date().getTime()*Math.random());
+    return Number.parseInt(new Date().getTime()*Math.random()).toString();
 }
 
 const init = [
@@ -24,7 +24,7 @@ const todos = (state = init, action) => {
       case 'EDIT':
         const newTaskList = state.map(item=>{
 
-            if(item.id == action.value.id){
+            if(item.id === action.value.id){
                 console.log(item);
                 item.task = action.value.task;
             }

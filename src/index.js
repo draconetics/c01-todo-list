@@ -3,14 +3,18 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import { createStore } from 'redux'
+import { createStore, combineReducers } from 'redux'
 import { Provider } from 'react-redux'
-import rootReducer from './reducers'
+//import rootReducer from './reducers'
+import taskReducer from './reducers/taskReducer'
+import taskAxiosReducer from './reducers/taskAxiosReducer'
 
-const store = createStore(rootReducer);
+//const store = createStore(taskAxios);
+const rootReducer = createStore(combineReducers({todoAxios: taskAxiosReducer, todo: taskReducer}))
+// This would produce the following state object
 
 ReactDOM.render(
-  <Provider store={store}>
+  <Provider store={rootReducer}>
   <React.StrictMode>
     <App />
   </React.StrictMode>
