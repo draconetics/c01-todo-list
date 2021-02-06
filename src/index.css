@@ -4,9 +4,17 @@
   box-sizing: border-box;
 }
 
+:root{
+  --secundary-color:#473E3F;
+  --success-color:#8EDC9D;
+  --danger-color:#EF7126;
+  --warning-color:#F9E559;
+  --primary-color:#6CCECB;
+}
+
 a{
   text-decoration: none;
-  color: #000;
+  color: var(--secundary-color);
 }
 
 ul{
@@ -23,7 +31,7 @@ input{
 
 .btn{
     padding: .7rem 1rem;
-    border-radius: .5rem;
+    border-radius: .1rem;
     cursor: pointer;
 }
 

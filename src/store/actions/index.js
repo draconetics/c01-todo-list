@@ -1,4 +1,4 @@
-import TaskService from '../services/TaskService'
+import TaskService from '../../services/TaskService'
 
 export const updateTaskList = async (dispatch)=>{
   return await TaskService.getAll()

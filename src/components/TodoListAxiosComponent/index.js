@@ -1,5 +1,5 @@
 import TodoListAxios from './TodoListAxios'
-import { createTask, updateTask, updateTaskList, deleteTask } from '../../actions'
+import { createTask, updateTask, updateTaskList, deleteTask } from '../../store/actions'
 import { connect } from 'react-redux';
 
 

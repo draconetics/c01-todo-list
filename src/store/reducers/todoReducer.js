@@ -3,38 +3,40 @@ const getId = ()=>{
 }
 
 const init = [
-    { id:getId(), task:"do somethins interneting"},
-    { id:getId(), task:"do something special"},
-    { id:getId(), task:"wakeup early"},
-    { id:getId(), task:"do not sleep"},
+    { id:getId(), todo:"do somethins interneting"},
+    { id:getId(), todo:"do something special"},
+    { id:getId(), todo:"wakeup early"},
+    { id:getId(), todo:"do not sleep"},
 ]
 
-const todos = (state = init, action) => {
+const todoList = (state = init, action) => {
     switch (action.type) {
       case 'ADD':
+        console.log('add new element');
+        console.log(action.value);
         return [
           ...state,
           {
             id: getId(),
-            task: action.value.task
+            todo: action.value.todo
           }
         ]
       case 'DELETE':
           return state.filter(item=>item.id !== action.value.id);
       case 'EDIT':
-        const newTaskList = state.map(item=>{
+        const newTodoList = state.map(item=>{
 
             if(item.id === action.value.id){
                 console.log(item);
-                item.task = action.value.task;
+                item.todo = action.value.todo;
             }
             return item;
         });
         
-        return  [...newTaskList];
+        return  [...newTodoList];
       default:
         return state
     }
   }
   
-  export default todos
+  export default todoList;

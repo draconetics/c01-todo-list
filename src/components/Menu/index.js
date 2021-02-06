@@ -5,7 +5,7 @@ import './index.css'
 
 export default ()=>{
     return (
-        <header className="App-header">
+        <header className="App-header" data-test="Menu">
             <div className="main-nav">
                 <div className="logo-container">
                     <img src={logo} className="App-logo" alt="logo" />

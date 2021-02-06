@@ -6,13 +6,11 @@ import {
   Route
 } from "react-router-dom";
 
-import MainMenu from './components/MenuComponent'
-import TodoList from './components/TodoListComponent'
+import MainMenu from './components/Menu'
+import TodoList from './components/TodoList'
 import TodoListAxios from './components/TodoListAxiosComponent'
 
 function App(props) {
-
-
 
   return (
     <div className="App">
@@ -20,10 +18,10 @@ function App(props) {
         <MainMenu></MainMenu>
         <Switch>
           <Route exact path="/">
-              <TodoList></TodoList>   
+              <TodoList />   
           </Route>
           <Route path="/todolist-axios">
-              <TodoListAxios></TodoListAxios>   
+              <TodoListAxios />   
           </Route>
           
         </Switch>
