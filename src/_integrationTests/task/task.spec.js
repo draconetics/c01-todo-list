@@ -1,7 +1,8 @@
+/* eslint-disable no-underscore-dangle */
 import moxios from 'moxios';
 import ReduxThunk from 'redux-thunk';
-import rootReducer from '../../store/reducers/index';
 import { applyMiddleware, createStore } from 'redux';
+import rootReducer from '../../store/reducers/index';
 import {
   fetchTaskList,
   updateTask,
@@ -39,17 +40,16 @@ describe('#Task store', () => {
 
   it('should FETCH item to taskReducer.taskList', async () => {
     const store = createStoreWithMiddleware(rootReducer);
-    //console.log(store);
+    // console.log(store);
 
     moxios.wait(() => {
       const request = moxios.requests.mostRecent();
-      //request.respondWith({ status: 200, response: {data:{results:expectedState}} }) //mocked response
-      request.respondWith({ status: 200, response: { results: taskList } }); //mocked response
+      request.respondWith({ status: 200, response: { results: taskList } });
     });
 
     await store.dispatch(fetchTaskList).then(() => {
       const newState = store.getState();
-      //console.log(newState);
+      // console.log(newState);
       expect(taskList).toEqual(newState.taskReducer.taskList);
     });
   });
@@ -74,10 +74,10 @@ describe('#Task store', () => {
     await store.dispatch(fetchTaskList);
     await store.dispatch(updateTask(editedItem)).then(() => {
       const newState = store.getState();
-      //console.log(newState);
+      // console.log(newState);
 
       expect(editedItem).toEqual(newState.taskReducer.taskList[2]);
-    }); //fin function
+    }); // fin function
   });
 
   it('should CREATE new item to taskReducer.taskList', async () => {
@@ -94,9 +94,9 @@ describe('#Task store', () => {
 
     await store.dispatch(saveTask(newItem.task)).then(() => {
       const newState = store.getState();
-      //console.log(newState);
+      // console.log(newState);
       expect(newItem).toEqual(newState.taskReducer.taskList[0]);
-    }); //fin function
+    }); // fin function
   });
 
   it('should DELETE item from taskReducer.taskList', async () => {
@@ -112,15 +112,15 @@ describe('#Task store', () => {
     });
 
     await store.dispatch(saveTask(newItem.task));
-    
-    //2nd step: DELETE inserted item
-    moxios.stubRequest('/tasks/' + newItem._id, {
+
+    // 2nd step: DELETE inserted item
+    moxios.stubRequest(`/tasks/${newItem._id}`, {
       status: 200,
       response: newItem._id,
     });
     await store.dispatch(deleteTask(newItem._id)).then(() => {
-      const taskList = store.getState().taskReducer.taskList;
-      expect(taskList.length).toEqual(0);
+      const { taskList: list } = store.getState().taskReducer;
+      expect(list.length).toEqual(0);
     });
   });
 });

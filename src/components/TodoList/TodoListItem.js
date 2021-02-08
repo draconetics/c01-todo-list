@@ -6,7 +6,7 @@ export default function TodoListItem({
   item,
   editTodoByIndex,
   deleteTodo,
-  updateRefItems
+  updateRefItems,
 }) {
   return (
     <>
@@ -20,10 +20,10 @@ export default function TodoListItem({
         </li>
         <li>
           <div>
-            <button className="btn" onClick={() => editTodoByIndex(index)}>
+            <button type="button" className="btn" onClick={() => editTodoByIndex(index)}>
               edit
             </button>
-            <button className="btn" onClick={() => deleteTodo(item.id, index)}>
+            <button type="button" className="btn" onClick={() => deleteTodo(item.id)}>
               delete
             </button>
           </div>
@@ -33,10 +33,14 @@ export default function TodoListItem({
   );
 }
 
+const item = {
+  id: PropTypes.any,
+  todo: PropTypes.string,
+};
 TodoListItem.propTypes = {
   index: PropTypes.number.isRequired,
-  item: PropTypes.object,
+  item: PropTypes.shape(item).isRequired,
   editTodoByIndex: PropTypes.func.isRequired,
   deleteTodo: PropTypes.func.isRequired,
-  updateRefItems: PropTypes.any.isRequired
+  updateRefItems: PropTypes.func.isRequired,
 };

@@ -13,15 +13,62 @@ class TodoList extends React.Component {
     };
     this.refItems = [];
     this.refEditItems = [];
-    this.updateReferences(this.props.todoList);
+    const { todoList } = this.props;
+    this.updateReferences(todoList);
   }
 
-  updateReferences = (todoList) => {
+  setTodoItem(e) {
+    console.log('setTodoItem');
+    this.setState({ todo: e.target.value });
+  }
+
+  cancelSetting(index) {
+    this.refItems[index].current.classList.add('show');
+    this.refEditItems[index].current.classList.remove('show');
+  }
+
+  saveTodo(id, index) {
+    const { editTodo } = this.props;
+    const inputValue = this.refEditItems[index].current.querySelector('input')
+      .value;
+    editTodo(id, inputValue);
+    this.cancelSetting(index);
+  }
+
+  editTodoByIndex(index) {
+    console.log('edit by reference');
+    this.refItems[index].current.classList.remove('show');
+    this.refEditItems[index].current.classList.add('show');
+  }
+
+  deleteTodo(id) {
+    const { deleteTodo } = this.props;
+    deleteTodo(id);
+  }
+
+  insertTodo(e) {
+    e.preventDefault();
+    const { todoList, addTodo } = this.props;
+    const { todo } = this.state;
+    const newTodo = {
+      id: todoList.length + 1,
+      todo,
+    };
+    addTodo(newTodo);
+    //   this.insertRefTodo();
+    this.setState({ todo: '' });
+  }
+
+  insertRefTodo() {
+    this.refItems.push(React.createRef());
+    this.refEditItems.push(React.createRef());
+  }
+
+  updateReferences(todoList) {
     if (
-      todoList.length === this.refItems.length &&
-      todoList === this.refEditItems.length
-    )
-      return;
+      todoList.length === this.refItems.length
+      && todoList === this.refEditItems.length
+    ) { return; }
 
     this.refItems = [todoList.length];
     this.refEditItems = [todoList.length];
@@ -30,69 +77,19 @@ class TodoList extends React.Component {
       this.refEditItems[index] = React.createRef();
       return reg;
     });
-  };
+  }
 
-  insertRefTodo = () => {
-    this.refItems.push(React.createRef());
-    this.refEditItems.push(React.createRef());
-  };
+  updateRefItems(index, element) {
+    if (index >= 0 && index < this.refItems.length) { this.refItems[index].current = element; }
+  }
 
-  insertTodo = (e) => {
-    e.preventDefault();
-    //console.log("inserting new element")
-    //console.log(this.state);
-    const { todoList, addTodo } = this.props;
-    const newTodo = {
-      id: todoList.length + 1,
-      todo: this.state.todo,
-    };
-    addTodo(newTodo);
-    //   this.insertRefTodo();
-    this.setState({ todo: '' });
-  };
-
-  deleteTodo = (id, index) => {
-    const { deleteTodo } = this.props;
-    deleteTodo(id).then(() => {
-      //this.deleteRefTodo(index);
-    });
-  };
-
-  editTodoByIndex = (index) => {
-    console.log('edit by reference');
-    this.refItems[index].current.classList.remove('show');
-    this.refEditItems[index].current.classList.add('show');
-  };
-
-  saveTodo = (id, index) => {
-    const { editTodo } = this.props;
-    let inputValue = this.refEditItems[index].current.querySelector('input')
-      .value;
-    editTodo(id, inputValue);
-    this.cancelSetting(index);
-  };
-
-  cancelSetting = (index) => {
-    this.refItems[index].current.classList.add('show');
-    this.refEditItems[index].current.classList.remove('show');
-  };
-
-  setTodoItem = (e) => {
-    console.log('setTodoItem');
-    this.setState({ todo: e.target.value });
-  };
-
-  updateRefItems = (index, element) => {
-    if (0 <= index && index < this.refItems.length)
-      this.refItems[index].current = element;
-  };
-
-  updateRefEditItems = (index, element) => {
-    if (0 <= index && index < this.refEditItems.length)
+  updateRefEditItems(index, element) {
+    if (index >= 0 && index < this.refEditItems.length) {
       this.refEditItems[index].current = element;
-  };
+    }
+  }
 
-  render = () => {
+  render() {
     const { todo } = this.state;
     const { todoList } = this.props;
     this.updateReferences(todoList);
@@ -104,31 +101,29 @@ class TodoList extends React.Component {
           setTodoItem={this.setTodoItem}
         />
         <div className="todolist__content">
-          {todoList &&
-            todoList.map((item, index) => {
-              return (
-                <div className="todolist__content-row" key={item.id}>
-                  <TodoListItem
-                    index={index}
-                    item={item}
-                    editTodoByIndex={this.editTodoByIndex}
-                    deleteTodo={this.deleteTodo}
-                    updateRefItems={this.updateRefItems}
-                  />
-                  <TodoListEditItem
-                    item={item}
-                    index={index}
-                    saveTodo={this.saveTodo}
-                    cancelSetting={this.cancelSetting}
-                    updateRefEditItems={this.updateRefEditItems}
-                  />
-                </div>
-              );
-            })}
+          {todoList
+            && todoList.map((item, index) => (
+              <div className="todolist__content-row" key={item.id}>
+                <TodoListItem
+                  index={index}
+                  item={item}
+                  editTodoByIndex={this.editTodoByIndex}
+                  deleteTodo={this.deleteTodo}
+                  updateRefItems={this.updateRefItems}
+                />
+                <TodoListEditItem
+                  item={item}
+                  index={index}
+                  saveTodo={this.saveTodo}
+                  cancelSetting={this.cancelSetting}
+                  updateRefEditItems={this.updateRefEditItems}
+                />
+              </div>
+            ))}
         </div>
       </div>
     );
-  }; // end render
+  } // end render
 }
 
 const item = {

@@ -1,24 +1,25 @@
-import http from "../config/http-common";
+/* eslint-disable class-methods-use-this */
+import http from '../config/http-common';
 
 class TaskService {
   getAll() {
-    return http.get("/tasks");
+    return http.get('/tasks');
   }
 
-    createTask(data){
-      return http.post("/tasks", data);    
-    }
+  createTask(data) {
+    return http.post('/tasks', data);
+  }
 
-    updateTask(id,editedTask){
-      return http.put("/tasks/"+id, editedTask)
-    }
+  updateTask(id, editedTask) {
+    return http.put(`/tasks/${id}`, editedTask);
+  }
 
-    deleteTask(id){
-      return http.delete("/tasks/"+id)
-    }
+  deleteTask(id) {
+    return http.delete(`/tasks/${id}`);
+  }
 
-    getInstance(){
-      return http;
-    }
+  getInstance() {
+    return http;
+  }
 }
 export default new TaskService();
