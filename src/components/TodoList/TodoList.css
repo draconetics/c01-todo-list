@@ -1,29 +1,27 @@
-/* .todolist{
+.todolist{
     margin: auto;
     display: flex;
     flex-direction: column;
     text-align: center;
 }
-.todolist-add{
+.todolist__form{
     width: 100%;
     padding: 2rem;
 }
 
-
-
-.todolist-add input {
+.todolist__form input {
     margin: 0 1rem;
 }
 
-.todolist-list{
+.todolist__content{
     padding: 1rem;
 }
 
-.task-item, .edit-task{
+.todolist__content-item, .todolist__content-edit-item{
     display: none;
 }
 
-.task-item.show, .edit-task.show{
+.todolist__content-item.show, .todolist__content-edit-item.show{
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -31,4 +29,3 @@
     padding: 1rem;
 }
 
- */

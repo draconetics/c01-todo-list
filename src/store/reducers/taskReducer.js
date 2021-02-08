@@ -3,7 +3,6 @@ const init = {
 }
 
 const task = (state = init, action) => {
-  console.log(action.value)
     switch (action.type) {
       case 'FETCH_TASKLIST':
         return {...state, taskList:action.value};

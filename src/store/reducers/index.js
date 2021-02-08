@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
-import taskAxiosReducer from './taskAxiosReducer'
+import taskReducer from './taskReducer'
 import todoReducer from './todoReducer'
 
 export default combineReducers({
-    todoAxios: taskAxiosReducer, todoReducer
+    taskReducer, todoReducer
 });

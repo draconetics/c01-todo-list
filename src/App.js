@@ -8,7 +8,7 @@ import {
 
 import MainMenu from './components/Menu'
 import TodoList from './components/TodoList'
-import TodoListAxios from './components/TodoListAxiosComponent'
+import TaskList from './components/TaskList'
 
 function App(props) {
 
@@ -21,7 +21,7 @@ function App(props) {
               <TodoList />   
           </Route>
           <Route path="/todolist-axios">
-              <TodoListAxios />   
+              <TaskList />   
           </Route>
           
         </Switch>

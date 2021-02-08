@@ -9,7 +9,8 @@
   --success-color:#8EDC9D;
   --danger-color:#EF7126;
   --warning-color:#F9E559;
-  --primary-color:#6CCECB;
+  --primary-color:108,206,203;/* #6CCECB */
+  --white:#ffffff;
 }
 
 a{
@@ -56,4 +57,5 @@ code {
 .container {
   max-width: 1100px;
   width: 100%;
+  margin:0 auto;
 }

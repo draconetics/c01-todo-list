@@ -18,7 +18,7 @@ class TaskController {
 
     async saveTask(req, res) {
         try{            
-
+            console.log(req.body);
             const data = await this.taskService.saveTask( req.body )
             return res.status(201).json(data);
         }

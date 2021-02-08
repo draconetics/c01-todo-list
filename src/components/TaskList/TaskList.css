@@ -1,0 +1,73 @@
+.tasklist{
+
+}
+
+.tasklist__form{
+    background-color: #fcf9f9;
+    padding:2rem;
+    text-align: center;
+}
+
+.tasklist__form input:focus{
+    outline: none;
+    border:1px solid var(--primary-color);
+}
+
+.tasklist__content ul{
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.tasklist__content ul li{
+    padding: 1rem;
+    border-bottom: 1px solid rgba(var(--primary-color),1);
+}
+.tasklist__content ul:hover{
+    background-color: rgba(var(--primary-color),1);
+    color:var(--white);
+}
+
+.tasklist__content ul li:nth-child(2){
+    flex:1;
+    text-align: center;
+}
+
+.modal{
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top:0;
+    left: 0;
+    background-color: rgba(var(--primary-color),0.5);
+    z-index:100;
+    opacity:0;
+    pointer-events: none;
+    transition: opacity .5s ease;
+}
+.modal.show{
+    opacity: 1;
+    pointer-events: all;
+}
+
+.modal .modal__content{
+    max-width: 400px;
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    background-color: var(--white);
+    border: 1px solid rgba(var(--primary-color),1);
+    border-radius: 2px;
+    box-shadow: 1px 1px 4px 1px rgba(0,0,0,.2);
+}
+
+.modal .modal__title{
+    background-color: rgba(var(--primary-color),1);
+    padding: 1rem;
+    color:var(--white);
+}
+
+.modal .modal__form{
+    padding: 1rem;
+}

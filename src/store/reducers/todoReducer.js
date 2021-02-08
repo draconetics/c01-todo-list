@@ -12,8 +12,6 @@ const init = [
 const todoList = (state = init, action) => {
     switch (action.type) {
       case 'ADD':
-        console.log('add new element');
-        console.log(action.value);
         return [
           ...state,
           {
