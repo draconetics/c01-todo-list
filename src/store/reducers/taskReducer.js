@@ -9,7 +9,8 @@ const task = (state = init, action) => {
       case 'CREATE_TASK':
         return {...state, taskList:[...state.taskList, action.value]}
       case 'DELETE_TASK':
-          return {...state, taskList:state.taskList.filter(item=>item._id !== action.value)}
+        const deletedTaskList = state.taskList.filter(item=>item._id !== action.value);
+          return {...state, taskList:deletedTaskList}
       case 'UPDATE_TASK':
         const newTaskList = state.taskList.map(item=>{
         

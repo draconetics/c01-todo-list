@@ -12,9 +12,9 @@ import { connect } from 'react-redux';
   const mapDispatchToProps = dispatch => {
     return {
         fetchTaskList: ()=>dispatch(fetchTaskList),
-        updateTask: (value)=>dispatch(updateTask(value)),
-        saveTask: (value) =>dispatch(saveTask(value)),
-        deleteTask: (value) => dispatch(deleteTask(value)),
+        updateTask: (item)=>dispatch(updateTask(item)),
+        saveTask: (task) =>dispatch(saveTask(task)),
+        deleteTask: (id) => dispatch(deleteTask(id)),
     };
   }; 
   

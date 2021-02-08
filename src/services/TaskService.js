@@ -16,5 +16,9 @@ class TaskService {
     deleteTask(id){
       return http.delete("/tasks/"+id)
     }
+
+    getInstance(){
+      return http;
+    }
 }
 export default new TaskService();

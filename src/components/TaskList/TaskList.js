@@ -70,9 +70,9 @@ class TaskList extends React.Component {
   render = () => {
     const { task, editTask } = this.state;
     const { taskList } = this.props;
-    console.log(taskList)
+
     return (
-      <div className="tasklist container" data-test="TodoList">
+      <div className="tasklist container" data-test="TaskList">
         <form className="tasklist__form" onSubmit={(e)=>this.saveTask(e)}>
           <input type="text"  onChange={e=>this.handleInput(e)} value={task}/>
           <button type="submit" className="btn">Add new task</button>
@@ -106,10 +106,14 @@ class TaskList extends React.Component {
 }
 
 const item = {
-  id: PropTypes.any,
-  todo: PropTypes.string,
+  _id: PropTypes.any,
+  task: PropTypes.string,
 };
 TaskList.propTypes = {
-  
+  taskList: PropTypes.arrayOf(PropTypes.shape(item)).isRequired,
+  fetchTaskList: PropTypes.func.isRequired,
+  updateTask: PropTypes.func.isRequired,
+  saveTask: PropTypes.func.isRequired,
+  deleteTask: PropTypes.func.isRequired,
 };
 export default TaskList;
