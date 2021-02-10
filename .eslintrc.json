@@ -6,7 +6,8 @@
     },
     "extends": [
         "plugin:react/recommended",
-        "airbnb"
+        "airbnb",
+        "plugin:cypress/recommended"
     ],
     "parserOptions": {
         "ecmaFeatures": {
@@ -23,5 +24,11 @@
         "react/jsx-filename-extension": [0] ,
         "import/no-extraneous-dependencies": ["error", {"devDependencies": true}]
     },
-    "ignorePatterns": ["/server", "**/vendor/*.js",".gitignore","serviceWorker.js"]
+    "ignorePatterns": [
+        "/server", 
+        "**/vendor/*.js",
+        ".gitignore",
+        "serviceWorker.js",
+        "/cypress"
+    ]
 }

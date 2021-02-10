@@ -17,15 +17,29 @@
     padding: 1rem;
 }
 
-.todolist__content-item, .todolist__content-edit-item{
-    display: none;
-}
-
-.todolist__content-item.show, .todolist__content-edit-item.show{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    border-bottom: 1px solid rgba(0,0,0,.1);
+.todolist__content-row{
+    display:flex;
     padding: 1rem;
+    border-bottom: 1px solid rgba(var(--primary-color),1);
 }
 
+.todolist__content-row input{
+    font-size: 1rem;
+    text-align: center;
+    outline: none;
+    border: 1px solid rgba(var(--primary-color),1);
+}
+
+.todolist__content-row input:focus{
+    box-shadow: 1px 1px 4px 1px rgba(var(--primary-color),1);
+}
+
+.todolist__content-row li{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.todolist__content-row li:nth-child(2){
+    flex:1;
+}
