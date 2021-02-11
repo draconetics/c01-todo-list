@@ -18,12 +18,15 @@ class TodoList extends React.Component {
   }
 
   setTodoItem(e) {
-    console.log('setTodoItem');
     this.setState({ todo: e.target.value });
   }
 
   updateTodo(item) {
     const { editTodo } = this.props;
+    if (item.todo.trim() === '') {
+      return;
+    }
+
     editTodo(item);
   }
 
@@ -37,6 +40,9 @@ class TodoList extends React.Component {
     e.preventDefault();
     const { todoList, addTodo } = this.props;
     const { todo } = this.state;
+    if (todo.trim() === '') {
+      return;
+    }
     const newTodo = {
       id: todoList.length + 1,
       todo,
@@ -46,6 +52,7 @@ class TodoList extends React.Component {
   }
 
   render() {
+    console.log('render TodoList componet');
     const { todo } = this.state;
     const { todoList } = this.props;
     return (
@@ -58,11 +65,12 @@ class TodoList extends React.Component {
         <div className="todolist__content">
           {todoList
             && todoList.map((item) => (
-                <TodoItem
-                  item={item}
-                  deleteTodo={this.deleteTodo}
-                  updateTodo={this.updateTodo}
-                />
+              <TodoItem
+                item={item}
+                deleteTodo={this.deleteTodo}
+                updateTodo={this.updateTodo}
+                key={item.id}
+              />
             ))}
         </div>
       </div>

@@ -6,7 +6,7 @@ function TodoItem({ item, deleteTodo, updateTodo }) {
   const [editMode, setEditMode] = useState(false);
 
   const handleChange = (e) => setTodoContent(e.target.value);
-
+  console.log('render todoitem');
   const ItemText = () => {
     if (editMode) {
       return (
@@ -58,7 +58,7 @@ function TodoItem({ item, deleteTodo, updateTodo }) {
   };
 
   return (
-    <ul data-test="TodoItem" className="todolist__content-row" key={item.id}>
+    <ul data-test="TodoItem" className="todolist__content-row">
       <li>{item.id}</li>
       {ItemText()}
       {ItemOption()}
@@ -76,4 +76,4 @@ TodoItem.propTypes = {
   updateTodo: PropTypes.func.isRequired,
 };
 
-export default TodoItem;
+export default React.memo(TodoItem);

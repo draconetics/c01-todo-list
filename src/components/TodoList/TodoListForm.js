@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export default function TodoListForm({ todo, insertTodo, setTodoItem }) {
+function TodoListForm({ todo, insertTodo, setTodoItem }) {
+  console.log('render form component');
   return (
     <>
       <form onSubmit={(e) => insertTodo(e)} className="todolist__form">
@@ -16,3 +17,4 @@ TodoListForm.propTypes = {
   insertTodo: PropTypes.func.isRequired,
   setTodoItem: PropTypes.func.isRequired,
 };
+export default React.memo(TodoListForm);

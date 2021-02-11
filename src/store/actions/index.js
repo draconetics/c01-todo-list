@@ -29,7 +29,9 @@ export const saveTask = (task) => async (dispatch) => {
 export const deleteTask = (id) => async (dispatch) => {
   await TaskService.deleteTask(id)
     .then((resp) => {
-      dispatch({ type: 'DELETE_TASK', value: String(resp.data) });
+      console.log(typeof resp.data);
+      console.log(resp.data);
+      dispatch({ type: 'DELETE_TASK', value: resp.data.deleted });
     })
     .catch((e) => console.log(e));
 };

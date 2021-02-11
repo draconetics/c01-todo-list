@@ -88,7 +88,7 @@ class TaskList extends React.Component {
         <div className="tasklist__content">
           {taskList
             && taskList.map((item, index) => (
-              <ul key={item._id}>
+              <ul key={item._id} className="tasklist__content-row">
                 <li>{index + 1}</li>
                 <li>{item.task}</li>
                 <li>
