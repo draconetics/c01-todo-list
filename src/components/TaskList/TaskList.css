@@ -36,7 +36,7 @@
 .modal{
     width: 100vw;
     height: 100vh;
-    position: absolute;
+    position: fixed;
     top:0;
     left: 0;
     background-color: rgba(var(--primary-color),0.5);

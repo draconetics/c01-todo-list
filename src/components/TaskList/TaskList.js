@@ -35,6 +35,11 @@ class TaskList extends React.Component {
     e.preventDefault();
     const { updateTask } = this.props;
     const { editTask } = this.state;
+    if (editTask.task.trim() === '') {
+      this.modalRef.current.classList.toggle('show');
+      return;
+    }
+
     updateTask(editTask);
     this.modalRef.current.classList.toggle('show');
   }
@@ -44,6 +49,9 @@ class TaskList extends React.Component {
     console.log('save');
     const { saveTask } = this.props;
     const { task } = this.state;
+    if (task.trim() === '') {
+      return;
+    }
     saveTask(task);
     this.setState({ task: '' });
   }
@@ -88,28 +96,30 @@ class TaskList extends React.Component {
         <div className="tasklist__content">
           {taskList
             && taskList.map((item, index) => (
-              <ul key={item._id} className="tasklist__content-row">
-                <li>{index + 1}</li>
-                <li>{item.task}</li>
-                <li>
-                  <button
-                    type="button"
-                    className="btn"
-                    onClick={() => this.editTask(item)}
-                  >
-                    Edit
-                  </button>
-                </li>
-                <li>
-                  <button
-                    type="button"
-                    className="btn"
-                    onClick={() => this.deleteTask(item._id)}
-                  >
-                    Delete
-                  </button>
-                </li>
-              </ul>
+              <div key={item._id}>
+                <ul className="tasklist__item">
+                  <li>{index + 1}</li>
+                  <li>{item.task}</li>
+                  <li>
+                    <button
+                      type="button"
+                      className="btn"
+                      onClick={() => this.editTask(item)}
+                    >
+                      Edit
+                    </button>
+                  </li>
+                  <li>
+                    <button
+                      type="button"
+                      className="btn"
+                      onClick={() => this.deleteTask(item._id)}
+                    >
+                      Delete
+                    </button>
+                  </li>
+                </ul>
+              </div>
             ))}
         </div>
         <div className="modal" ref={(element) => this.asignReference(element)}>

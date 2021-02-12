@@ -15,7 +15,7 @@ function App() {
           <Route exact path="/">
             <TodoList />
           </Route>
-          <Route path="/todolist-axios">
+          <Route path="/tasklist">
             <TaskList />
           </Route>
         </Switch>

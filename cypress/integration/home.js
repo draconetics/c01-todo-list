@@ -51,7 +51,15 @@ describe('#home',()=>{
                 cy.get('.todolist__content-row')
                     .its('length')
                     .then(newLength =>{
-                        expect(newLength).to.be.greaterThan(listingCount);
+                        if ($a.text().includes('')) {
+                            cy.log('exist')
+                            const oldLength = $a.children().length;
+                            //cy.get('@newTodoButton').click();
+                            cy.log(oldLength)
+                            cy.get('.tasklist__item').should('have.length',oldLength)
+                        }else{
+                            cy.log('no exist')
+                        }
                     });
             }) 
         }else{

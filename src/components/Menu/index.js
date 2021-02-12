@@ -12,7 +12,7 @@ export default () => (
       </div>
       <ul className="main-menu">
         <li><NavLink exact activeClassName="active" to="/">Todo List</NavLink></li>
-        <li><NavLink activeClassName="active" to="/todolist-axios">Todo List with Axios</NavLink></li>
+        <li><NavLink activeClassName="active" to="/tasklist">Todo List with Axios</NavLink></li>
       </ul>
     </div>
   </header>
