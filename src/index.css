@@ -11,6 +11,15 @@
   --warning-color:#F9E559;
   --primary-color:108,206,203;/* #6CCECB */
   --white:#ffffff;
+  --blue-color: #8000FF;
+  --blue-color-50: #8000ffb6;
+  --blue-color-30: #8000ff79;
+  --blue-color-10: #8000ff48;
+  --red-color: #FF0000;
+  --red-color-50: #ff0000b6;
+  --aqua-color: #00FFFF;
+  --aqua-color-50: #00ffff88;
+  --aqua-color-10: #00ffff56;
 }
 
 a{

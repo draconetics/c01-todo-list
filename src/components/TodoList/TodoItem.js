@@ -36,7 +36,7 @@ function TodoItem({ item, deleteTodo, updateTodo }) {
     if (editMode) {
       return (
         <li>
-          <button type="button" onClick={() => updateItem()} className="btn">
+          <button type="button" onClick={() => updateItem()} className="btn btn-save">
             Save
           </button>
           <button type="button" onClick={() => changeToShowMode()} className="btn">
@@ -47,10 +47,10 @@ function TodoItem({ item, deleteTodo, updateTodo }) {
     }
     return (
       <li>
-        <button type="button" onClick={() => changeToEditMode()} className="btn">
+        <button type="button" onClick={() => changeToEditMode()} className="btn btn-edit">
           Edit
         </button>
-        <button type="button" onClick={() => deleteTodo(item.id)} className="btn">
+        <button type="button" onClick={() => deleteTodo(item.id)} className="btn btn-delete">
           Delete
         </button>
       </li>

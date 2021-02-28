@@ -11,7 +11,23 @@
 
 .todolist__form input {
     margin: 0 1rem;
+    outline: none;
 }
+.todolist__form input:focus {
+    border: 1px solid var(--blue-color-50);
+    box-shadow: 1px 1px 4px 1px var(--blue-color);
+}
+
+.todolist__form button {
+    background-color: var(--blue-color);
+    color: var(--white);
+    border: none;
+}
+
+.todolist__form button:hover {
+    background-color: var(--blue-color-50);
+}
+
 
 .todolist__content{
     padding: 1rem;
@@ -30,8 +46,40 @@
     border: 1px solid rgba(var(--primary-color),1);
 }
 
-.todolist__content-row input:focus{
-    box-shadow: 1px 1px 4px 1px rgba(var(--primary-color),1);
+.todolist__content-row .btn-delete{
+    background-color: var(--red-color);
+    color: var(--white);
+    border: 0;
+    outline: none;
+}
+
+.todolist__content-row .btn-delete:hover{
+    background-color: var(--red-color-50);
+}
+
+.todolist__content-row .btn-edit{
+    background-color: var(--aqua-color);
+    border: 1px solid transparent;
+    outline: none;
+}
+
+.todolist__content-row .btn-edit:hover{
+    background-color: var(--aqua-color-10);
+    border: 1px solid var(--aqua-color)
+}
+
+.todolist__content-row input{
+    box-shadow: 1px 1px 4px 1px var(--blue-color-50);
+}
+
+.todolist__content-row .btn-save{
+    background-color: var(--blue-color);
+    outline: none;
+    color:var(--white);
+}
+
+.todolist__content-row .btn-save:hover{
+    background-color: var(--blue-color-30);
 }
 
 .todolist__content-row li{
