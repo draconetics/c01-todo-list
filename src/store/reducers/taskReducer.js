@@ -12,9 +12,7 @@ const task = (state = init, action) => {
       return { ...state, taskList: [...state.taskList, action.value] };
     }
     case 'DELETE_TASK': {
-      console.log(action.value);
       const deletedTaskList = state.taskList.filter((item) => item._id !== action.value);
-      console.log(deletedTaskList);
       return { ...state, taskList: deletedTaskList };
     }
     case 'UPDATE_TASK': {

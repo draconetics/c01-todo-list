@@ -10,16 +10,17 @@ function TodoItem({ item, deleteTodo, updateTodo }) {
   const ItemText = () => {
     if (editMode) {
       return (
-        <li>
-          <input
-            type="text"
-            value={todoContent}
-            onChange={(e) => handleChange(e)}
-          />
-        </li>
+        <input
+          type="text"
+          value={todoContent}
+          onChange={(e) => handleChange(e)}
+          className="todolist__input show"
+        />
       );
     }
-    return <li>{item.todo}</li>;
+    return (
+      <div>{todoContent}</div>
+    );
   };
 
   const changeToEditMode = () => setEditMode(true);
@@ -35,33 +36,33 @@ function TodoItem({ item, deleteTodo, updateTodo }) {
   const ItemOption = () => {
     if (editMode) {
       return (
-        <li>
+        <>
           <button type="button" onClick={() => updateItem()} className="btn btn-save">
             Save
           </button>
           <button type="button" onClick={() => changeToShowMode()} className="btn">
             Cancel
           </button>
-        </li>
+        </>
       );
     }
     return (
-      <li>
+      <>
         <button type="button" onClick={() => changeToEditMode()} className="btn btn-edit">
           Edit
         </button>
         <button type="button" onClick={() => deleteTodo(item.id)} className="btn btn-delete">
           Delete
         </button>
-      </li>
+      </>
     );
   };
 
   return (
     <ul data-test="TodoItem" className="todolist__content-row">
       <li>{item.id}</li>
-      {ItemText()}
-      {ItemOption()}
+      <li>{ItemText()}</li>
+      <li>{ItemOption()}</li>
     </ul>
   );
 }

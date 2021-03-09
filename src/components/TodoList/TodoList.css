@@ -35,15 +35,23 @@
 
 .todolist__content-row{
     display:flex;
+    flex-wrap: nowrap;
     padding: 1rem;
     border-bottom: 1px solid rgba(var(--primary-color),1);
 }
 
-.todolist__content-row input{
+.todolist__input{
     font-size: 1rem;
     text-align: center;
     outline: none;
     border: 1px solid rgba(var(--primary-color),1);
+    box-shadow: 1px 1px 4px 1px var(--blue-color-50);
+    animation: todoItem_input_effect 1s;
+    height: 3rem;
+}
+@keyframes todoItem_input_effect {
+    from {opacity:0; max-width: 250px;}
+    to {opacity: 1;max-width: 300px;}
 }
 
 .todolist__content-row .btn-delete{
@@ -68,10 +76,6 @@
     border: 1px solid var(--aqua-color)
 }
 
-.todolist__content-row input{
-    box-shadow: 1px 1px 4px 1px var(--blue-color-50);
-}
-
 .todolist__content-row .btn-save{
     background-color: var(--blue-color);
     outline: none;
@@ -85,9 +89,21 @@
 .todolist__content-row li{
     display:flex;
     justify-content: center;
+    margin:auto;
     align-items: center;
 }
 
 .todolist__content-row li:nth-child(2){
     flex:1;
+}
+
+.todolist__content-row li:nth-child(2) div{
+    height: 3rem;
+    line-height: 3rem;
+    animation: todoItem_content_effect 1s linear;
+}
+
+@keyframes todoItem_content_effect {
+    from {opacity:0; }
+    to {opacity: 1;}
 }
